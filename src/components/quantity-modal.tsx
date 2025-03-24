@@ -53,7 +53,7 @@ export function QuantityModal({ product, isOpen, onClose }: QuantityModalProps) 
           </div>
           <div>
             <h3 className="font-medium">{product.name}</h3>
-            <p className="text-amber-600 font-bold">R$ {product.price.toFixed(2)}</p>
+            <p className="text-teal-600 font-bold">R$ {product.price.toFixed(2)}</p>
           </div>
         </div>
         <div className="flex items-center justify-center gap-4 py-2">
@@ -67,7 +67,7 @@ export function QuantityModal({ product, isOpen, onClose }: QuantityModalProps) 
         </div>
         <DialogFooter className="sm:justify-between">
           <div className="text-lg font-bold">Total: R$ {(product.price * quantity).toFixed(2)}</div>
-          <Button className="bg-amber-600 hover:bg-amber-700" onClick={handleAddToCart}>
+          <Button className="bg-teal-600 hover:bg-teal-700" onClick={handleAddToCart}>
             Adicionar ao Carrinho
           </Button>
         </DialogFooter>

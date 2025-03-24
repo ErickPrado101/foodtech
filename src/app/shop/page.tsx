@@ -30,7 +30,7 @@ export default function StorePage() {
             <ShoppingCart className="h-5 w-5" />
             <span className="ml-2">Carrinho</span>
             {totalItems > 0 && (
-              <span className="absolute -top-2 -right-2 bg-amber-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-teal-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 {totalItems}
               </span>
             )}
@@ -41,17 +41,16 @@ export default function StorePage() {
           <section className="mb-12">
             <div className="flex flex-col md:flex-row items-center gap-6 bg-slate-100 rounded-2xl p-8 mb-12">
               <div className="flex-1">
-                <h2 className="text-3xl font-bold mb-4">Nossos Pães Artesanais</h2>
+                <h2 className="text-3xl font-bold mb-4">Nossos Produtos</h2>
                 <p className="text-slate-700">
-                  Descubra nossa seleção de pães artesanais, feitos diariamente com ingredientes selecionados e técnicas
-                  tradicionais. Cada pão é único e preparado com carinho para proporcionar uma experiência gastronômica
-                  excepcional.
+                  Descubra nossa seleção de medicamentos, vitaminas, produtos de higiene e beleza. Todos os produtos são
+                  selecionados com cuidado para garantir sua saúde e bem-estar.
                 </p>
               </div>
               <div className="flex-1">
                 <Image
-                  src="/Pães-com-ingredientes-regionais.jpg"
-                  alt="Pães artesanais"
+                  src="/171101_farmacia_de_buzios_125616-1024x683-1.jpg"
+                  alt="Produtos farmacêuticos"
                   width={500}
                   height={300}
                   className="rounded-xl object-cover"

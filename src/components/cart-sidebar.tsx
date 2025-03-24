@@ -74,7 +74,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
-                        <p className="text-amber-600 font-medium">R$ {item.product.price.toFixed(2)}</p>
+                        <p className="text-teal-600 font-medium">R$ {item.product.price.toFixed(2)}</p>
                         <div className="flex items-center gap-2 mt-2">
                           <Button
                             variant="outline"
@@ -106,7 +106,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                   <span className="font-medium">Subtotal</span>
                   <span className="font-bold">R$ {totalPrice.toFixed(2)}</span>
                 </div>
-                <Button className="w-full bg-amber-600 hover:bg-amber-700" onClick={handleCheckout}>
+                <Button className="w-full bg-teal-600 hover:bg-teal-700" onClick={handleCheckout}>
                   Finalizar Pedido
                 </Button>
               </div>

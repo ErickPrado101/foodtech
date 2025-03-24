@@ -54,7 +54,7 @@ export function CheckoutModal({ isOpen, onClose, onComplete }: CheckoutModalProp
 
     // Use o número de telefone correto (este é um exemplo, substitua pelo número real)
     // Formato internacional sem o '+' e sem espaços ou caracteres especiais
-    const phoneNumber = "5527988080038" // Substitua pelo número real da padaria
+    const phoneNumber = "5511999999999" // Substitua pelo número real da farmácia
 
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`
     setWhatsappUrl(url)
@@ -67,7 +67,7 @@ export function CheckoutModal({ isOpen, onClose, onComplete }: CheckoutModalProp
       if (linkRef.current) {
         linkRef.current.click()
       }
-    }, 1500)
+    }, 1000)
 
     // Show success state
     setIsSuccess(true)
@@ -108,9 +108,9 @@ export function CheckoutModal({ isOpen, onClose, onComplete }: CheckoutModalProp
             <div className="h-16 w-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
               <Check className="h-8 w-8 text-green-600" />
             </div>
-            <h2 className="text-xl font-bold mb-2">Pedido sendo enviado!</h2>
+            <h2 className="text-xl font-bold mb-2">Pedido Enviado!</h2>
             <p className="text-center text-slate-600 mb-4">
-              Seu está sendo processado. Você será redirecionado para o WhatsApp para enviar a mensagem.
+              Seu pedido foi processado com sucesso. Você será redirecionado para o WhatsApp para enviar a mensagem.
             </p>
 
             {showWhatsappLink && (
@@ -179,7 +179,7 @@ export function CheckoutModal({ isOpen, onClose, onComplete }: CheckoutModalProp
                     <span className="font-medium">Total do Pedido:</span>
                     <span className="font-bold text-lg">R$ {totalPrice.toFixed(2)}</span>
                   </div>
-                  <Button type="submit" className="w-full bg-amber-600 hover:bg-amber-700" disabled={isSubmitting}>
+                  <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700" disabled={isSubmitting}>
                     {isSubmitting ? "Processando..." : "Confirmar Pedido"}
                   </Button>
                 </div>
