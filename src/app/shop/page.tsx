@@ -24,13 +24,13 @@ export default function StorePage() {
               <ArrowLeft className="mr-2 h-5 w-5" />
               Voltar
             </Link>
-            <h1 className="text-2xl font-bold text-slate-900">Nossa Loja</h1>
+            <h1 className="text-2xl font-bold text-slate-900">Nosso Cardápio</h1>
           </div>
           <Button variant="outline" className="relative" onClick={() => setIsSidebarOpen(true)}>
             <ShoppingCart className="h-5 w-5" />
             <span className="ml-2">Carrinho</span>
             {totalItems > 0 && (
-              <span className="absolute -top-2 -right-2 bg-teal-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 {totalItems}
               </span>
             )}
@@ -41,16 +41,19 @@ export default function StorePage() {
           <section className="mb-12">
             <div className="flex flex-col md:flex-row items-center gap-6 bg-slate-100 rounded-2xl p-8 mb-12">
               <div className="flex-1">
-                <h2 className="text-3xl font-bold mb-4">Nossos Produtos</h2>
+                <h2 className="text-3xl font-bold mb-4">Delícias para Todos os Gostos</h2>
                 <p className="text-slate-700">
-                  Descubra nossa seleção de medicamentos, vitaminas, produtos de higiene e beleza. Todos os produtos são
-                  selecionados com cuidado para garantir sua saúde e bem-estar.
+                  Descubra nossa seleção de lanches, pizzas, porções e bebidas. Todos preparados com ingredientes
+                  frescos e muito sabor para satisfazer sua fome a qualquer hora do dia.
+                </p>
+                <p className="text-red-600 mt-2 font-medium">
+                  Dica: Cadastre-se para obter 10% de desconto em todos os produtos!
                 </p>
               </div>
               <div className="flex-1">
                 <Image
-                  src="/171101_farmacia_de_buzios_125616-1024x683-1.jpg"
-                  alt="Produtos farmacêuticos"
+                  src="/placeholder.svg?height=300&width=500"
+                  alt="Variedade de lanches"
                   width={500}
                   height={300}
                   className="rounded-xl object-cover"

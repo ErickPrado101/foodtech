@@ -5,6 +5,7 @@ import type React from "react"
 import { useState, useRef } from "react"
 import { Check, Copy, ExternalLink } from "lucide-react"
 import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -19,6 +20,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useCart } from "@/hooks/use-cart"
+import { useAuth } from "@/hooks/use-auth"
 
 interface CheckoutModalProps {
   isOpen: boolean
@@ -27,16 +29,25 @@ interface CheckoutModalProps {
 }
 
 export function CheckoutModal({ isOpen, onClose, onComplete }: CheckoutModalProps) {
+  const router = useRouter()
   const { cartItems, totalPrice } = useCart()
-  const [name, setName] = useState("")
+  const { user, isAuthenticated } = useAuth()
+
+  const [name, setName] = useState(user?.name || "")
   const [address, setAddress] = useState("")
-  const [phone, setPhone] = useState("")
+  const [phone, setPhone] = useState(user?.phone || "")
   const [notes, setNotes] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [whatsappUrl, setWhatsappUrl] = useState("")
   const [showWhatsappLink, setShowWhatsappLink] = useState(false)
   const linkRef = useRef<HTMLAnchorElement>(null)
+
+  // Redirecionar para login se não estiver autenticado
+  const handleLoginRedirect = () => {
+    onClose()
+    router.push("/login")
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -54,7 +65,7 @@ export function CheckoutModal({ isOpen, onClose, onComplete }: CheckoutModalProp
 
     // Use o número de telefone correto (este é um exemplo, substitua pelo número real)
     // Formato internacional sem o '+' e sem espaços ou caracteres especiais
-    const phoneNumber = "5511999999999" // Substitua pelo número real da farmácia
+    const phoneNumber = "5511999999999" // Substitua pelo número real da lanchonete
 
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`
     setWhatsappUrl(url)
@@ -77,9 +88,11 @@ export function CheckoutModal({ isOpen, onClose, onComplete }: CheckoutModalProp
       setIsSubmitting(false)
       setShowWhatsappLink(false)
       // Reset form
-      setName("")
+      if (!user) {
+        setName("")
+        setPhone("")
+      }
       setAddress("")
-      setPhone("")
       setNotes("")
     }, 5000) // Aumentado para dar tempo ao usuário de ver e usar o link
   }
@@ -103,7 +116,22 @@ export function CheckoutModal({ isOpen, onClose, onComplete }: CheckoutModalProp
   return (
     <Dialog open={isOpen} onOpenChange={isSuccess ? undefined : onClose}>
       <DialogContent className="sm:max-w-md">
-        {isSuccess ? (
+        {!isAuthenticated ? (
+          <div className="py-6">
+            <DialogHeader>
+              <DialogTitle>Faça login para continuar</DialogTitle>
+              <DialogDescription>Para finalizar seu pedido, você precisa estar logado.</DialogDescription>
+            </DialogHeader>
+            <div className="flex flex-col gap-4 mt-6">
+              <Button className="w-full bg-red-600 hover:bg-red-700" onClick={handleLoginRedirect}>
+                Fazer login
+              </Button>
+              <Button variant="outline" className="w-full" onClick={onClose}>
+                Voltar ao carrinho
+              </Button>
+            </div>
+          </div>
+        ) : isSuccess ? (
           <div className="flex flex-col items-center justify-center py-8">
             <div className="h-16 w-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
               <Check className="h-8 w-8 text-green-600" />
@@ -153,11 +181,17 @@ export function CheckoutModal({ isOpen, onClose, onComplete }: CheckoutModalProp
               <div className="grid gap-4 py-4">
                 <div className="grid gap-2">
                   <Label htmlFor="name">Nome completo</Label>
-                  <Input id="name" value={name} onChange={(e) => setName(e.target.value)} required />
+                  <Input id="name" value={name} onChange={(e) => setName(e.target.value)} required disabled={!!user} />
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="phone">Telefone</Label>
-                  <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} required />
+                  <Input
+                    id="phone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    required
+                    disabled={!!user?.phone}
+                  />
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="address">Endereço de entrega</Label>
@@ -179,7 +213,7 @@ export function CheckoutModal({ isOpen, onClose, onComplete }: CheckoutModalProp
                     <span className="font-medium">Total do Pedido:</span>
                     <span className="font-bold text-lg">R$ {totalPrice.toFixed(2)}</span>
                   </div>
-                  <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700" disabled={isSubmitting}>
+                  <Button type="submit" className="w-full bg-red-600 hover:bg-red-700" disabled={isSubmitting}>
                     {isSubmitting ? "Processando..." : "Confirmar Pedido"}
                   </Button>
                 </div>
