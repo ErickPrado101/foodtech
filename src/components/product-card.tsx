@@ -6,10 +6,16 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { QuantityModal } from "@/components/quantity-modal"
-import type { Product } from "@/lib/types"
 
 interface ProductCardProps {
-  product: Product
+  product: {
+    price: number;
+    id: string;
+    name: string;
+    description: string;
+    image: string;
+  };
+  showDiscountBadge?: boolean;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
