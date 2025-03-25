@@ -77,7 +77,7 @@ export default function MyOrdersPage() {
               <Package className="h-16 w-16 text-slate-300 mx-auto mb-4" />
               <h2 className="text-xl font-bold mb-2">Nenhum pedido encontrado</h2>
               <p className="text-slate-600 mb-6">Você ainda não fez nenhum pedido.</p>
-              <Link href="/loja">
+              <Link href="/shop">
                 <Button className="bg-red-600 hover:bg-red-700">Ver cardápio</Button>
               </Link>
             </div>

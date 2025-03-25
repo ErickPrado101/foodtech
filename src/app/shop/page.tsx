@@ -52,7 +52,7 @@ export default function StorePage() {
               </div>
               <div className="flex-1">
                 <Image
-                  src="/placeholder.svg?height=300&width=500"
+                  src="/vue-dessus-fast-food-mix-batonnets-mozzarella-club-sandwich-hamburger-pizza-aux-champignons-pizza-cesar-salade-crevettes-frites-ketchup-mayo-sauces-au-fromage-table_141793-3998.avif"
                   alt="Variedade de lanches"
                   width={500}
                   height={300}

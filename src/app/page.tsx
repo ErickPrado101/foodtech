@@ -12,7 +12,7 @@ export default function Home() {
         <header className="flex flex-col md:flex-row items-center justify-between mb-16">
           <div className="flex items-center gap-3 mb-4 md:mb-0">
             <Image
-              src="/placeholder.svg?height=40&width=40"
+              src="/images.png"
               alt="Sabor Express Logo"
               width={40}
               height={40}
@@ -51,7 +51,7 @@ export default function Home() {
               href="/login?role=admin"
               className="text-sm bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition-colors duration-200"
             >
-              Área da Empresa
+              login
             </Link>
           </nav>
         </header>
@@ -70,7 +70,7 @@ export default function Home() {
                 cidade, com ingredientes frescos e sabor incomparável.
               </p>
               <div className="pt-4">
-                <Link href="/loja">
+                <Link href="/shop">
                   <Button className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-4 rounded-lg transition-colors duration-200">
                     Ver cardápio
                     <ArrowRight className="h-5 w-5" />
@@ -81,7 +81,7 @@ export default function Home() {
             <div className="flex-1 relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/placeholder.svg?height=500&width=600"
+                  src="/images (2).jpeg"
                   alt="Lanches deliciosos"
                   width={600}
                   height={500}
@@ -163,7 +163,7 @@ export default function Home() {
               </div>
 
               <div className="w-full max-w-md">
-                <Link href="/loja">
+                <Link href="/shop">
                   <Button className="flex w-full items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-4 rounded-lg transition-colors duration-200">
                     Fazer um pedido agora
                     <ArrowRight className="h-5 w-5" />
@@ -179,7 +179,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center gap-2 mb-4 md:mb-0">
               <Image
-                src="/placeholder.svg?height=32&width=32"
+                src="/images.png"
                 alt="Sabor Express Logo"
                 width={32}
                 height={32}
